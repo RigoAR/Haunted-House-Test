@@ -15,9 +15,9 @@ public class HauntedHouse {
         ghostPresent = false;
     }
 
-    public void refillCandyBowl(int amount) {
+    /*public void refillCandyBowl(int amount) {
             candyCount += amount;
-    }
+    } */
 
     public void trickOrTreat(int people){
         candyCount = candyCount - people;
@@ -42,9 +42,16 @@ public class HauntedHouse {
         return result;
     }
 
-    public int candyZero()
+
+    public void refillCandyBowl(int amount)
     {
-        candyCount = 0;
+        if (amount > 0) {
+            candyCount += amount;
+        }
+        if(candyCount < 0)
+        {
+            candyCount = Integer.MAX_VALUE;
+        }
     }
 }
 
