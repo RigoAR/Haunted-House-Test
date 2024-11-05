@@ -27,4 +27,12 @@ public class HauntedTest {
         Assertions.assertEquals(false, house.isGhostPresent() );
 
     }
+
+    @Test
+    public void scarySoundsTest()
+    {
+        Assertions.assertEquals("Boo!", house.spookySound() )
+
+    }
+
 }
