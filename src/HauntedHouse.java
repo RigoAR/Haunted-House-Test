@@ -41,5 +41,10 @@ public class HauntedHouse {
         result += "has " + candyCount + " candy.";
         return result;
     }
+
+    public int candyZero()
+    {
+        candyCount = 0;
+    }
 }
 
