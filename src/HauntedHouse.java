@@ -1,17 +1,21 @@
 public class HauntedHouse {
     private boolean ghostPresent;
     private int candyCount;
+    private static final int defaultCandy = 10;
 
-    public HauntedHouse() {
+    public HauntedHouse()
+    {
         ghostPresent = true;
         candyCount = 10;
     }
 
-    public boolean isGhostPresent() {
+    public boolean isGhostPresent()
+    {
         return ghostPresent;
     }
 
-    public void scareAwayGhost() {
+    public void scareAwayGhost()
+    {
         ghostPresent = false;
     }
 
@@ -19,20 +23,32 @@ public class HauntedHouse {
             candyCount += amount;
     } */
 
-    public void trickOrTreat(int people){
+    /*public void trickOrTreat(int people){
         candyCount = candyCount - people;
+    } */
+
+    public void trickOrTreat(int people)
+    {
+        if (people <= 0) return;
+        candyCount -= people;
+        if (candyCount < 0) {
+            candyCount = defaultCandy;
+        }
     }
 
-    public int getCandyCount() {
+    public int getCandyCount()
+    {
         return candyCount;
     }
 
-    public String spookySound() {
+    public String spookySound()
+    {
         return "Boo!";
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         String result = "The house ";
 
         if(isGhostPresent()) {
@@ -43,7 +59,7 @@ public class HauntedHouse {
     }
 
 
-    public void refillCandyBowl(int amount)
+    /*public void refillCandyBowl(int amount)
     {
         if (amount > 0) {
             candyCount += amount;
@@ -52,6 +68,30 @@ public class HauntedHouse {
         {
             candyCount = Integer.MAX_VALUE;
         }
+    } */
+
+    public void refillCandyBowl(int amount)
+    {
+        if (amount <= 0) {
+            candyCount = defaultCandy;
+            return;
+        }
+        if (amount == Integer.MAX_VALUE) {
+            candyCount = Integer.MAX_VALUE;
+            return;
+        }
+        if (candyCount > Integer.MAX_VALUE - amount) {
+            candyCount = Integer.MAX_VALUE;
+        } else {
+            candyCount += amount;
+        }
     }
+
+    public void bringBackGhost()
+    {
+        ghostPresent = true;
+    }
+
+
 }
 

@@ -76,5 +76,35 @@ public class HauntedTest {
 
     }
 
+    @Test
+    public void trickOrTreatDecreaseTest() {
+        house.trickOrTreat(3);
+        Assertions.assertEquals(7, house.getCandyCount());
+    }
+
+    @Test
+    public void trickOrTreatTooManyPeopleTest()
+    {
+        house.trickOrTreat(15);
+        Assertions.assertTrue(house.getCandyCount() >= 0);
+    }
+
+    @Test
+    public void runningLowTest()
+    {
+        house.trickOrTreat(10);
+        Assertions.assertEquals(0, house.getCandyCount());
+        house.refillCandyBowl(0);
+        Assertions.assertEquals(10, house.getCandyCount());
+    }
+
+    @Test
+    public void bringBackGhostTest() {
+        house.scareAwayGhost();
+        Assertions.assertFalse(house.isGhostPresent());
+        house.bringBackGhost();
+        Assertions.assertTrue(house.isGhostPresent());
+    }
+
 
 }
